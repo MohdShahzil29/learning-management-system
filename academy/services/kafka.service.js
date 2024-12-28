@@ -26,7 +26,7 @@ export const consumeMessages = async () => {
   });
 };
 
-export const getUserFromKafka = async (req) => {
+export const getStudentFromKafka = async (req) => {
   const userEmail = req.headers["user-email"];
   console.log("Fetched user-email from headers:", userEmail);
 

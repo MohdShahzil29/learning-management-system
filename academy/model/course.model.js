@@ -5,8 +5,8 @@ const Course = sequelize.define(
   "Course",
   {
     id: {
-      type: DataTypes.INTEGER,
-      autoIncrement: true,
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
     },
     title: {
@@ -15,7 +15,7 @@ const Course = sequelize.define(
     },
     description: {
       type: DataTypes.TEXT,
-      allowNull: true,
+      allowNull: false,
     },
     duration: {
       type: DataTypes.INTEGER,
@@ -23,44 +23,55 @@ const Course = sequelize.define(
     },
     level: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     courseLevel: {
-      type: DataTypes.STRING,
+      type: DataTypes.ENUM("Beginner", "Medium", "Advance"),
+      field: "course_level", 
       allowNull: false,
+      defaultValue: "Beginner",
     },
     category: {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    courseThumbnail: {
+      type: DataTypes.STRING, 
+      field: "course_thumbnail",
+      allowNull: true,
+    },
     coursePrice: {
       type: DataTypes.FLOAT,
       allowNull: false,
     },
-    courseThumbnail: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
     enrolledStudents: {
       type: DataTypes.INTEGER,
+      field: "enrolled_students", 
       defaultValue: 0,
     },
-    lectures: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
-    creator: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
+    // lectures: {
+    //   type: DataTypes.INTEGER,
+    //   allowNull: true,
+    // },
     isPublished: {
       type: DataTypes.BOOLEAN,
+      field: "is_published",
       defaultValue: false,
+    },
+    createdAt: {
+      type: DataTypes.DATE,
+      field: "created_at",
+      defaultValue: DataTypes.NOW,
+    },
+    updatedAt: {
+      type: DataTypes.DATE,
+      field: "updated_at",
+      defaultValue: DataTypes.NOW,
     },
   },
   {
     timestamps: true,
-    tableName: "course",
+    tableName: "course", 
   }
 );
 
