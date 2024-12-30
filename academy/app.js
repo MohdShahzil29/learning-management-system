@@ -30,7 +30,9 @@ app.use(cookieParser());
 // Routes
 import academyRoutes from "./routes/auth.routes.js";
 import courseRoutes from "./routes/course.routes.js";
+import purchaseRoutes from "./routes/purchase.routes.js";
 app.use("/", academyRoutes);
 app.use("/", courseRoutes);
+app.use("/", purchaseRoutes);
 
 export default app;

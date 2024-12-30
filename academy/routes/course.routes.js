@@ -16,7 +16,7 @@ app.post("/search-course", searchCourse);
 app.get("/published-course", getPublishedCourse);
 app.put("/edit-course/:id", isAuthenticated, editCourse);
 app.post("/create-lecture/:id", isAuthenticated, createLecture);
-app.get("/get-lecture", getCourseLecture);
+app.get("/get-lectures", getCourseLecture);
 app.get("/get-lecture/:id", getLectureById);
 
 export default app;
